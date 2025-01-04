@@ -12,11 +12,18 @@ import img5 from "../assets/home/slide5.jpg";
 
 // Import modules from Swiper
 import { FreeMode, Pagination } from 'swiper/modules';
+import SectionTitle from './SectionTitle';
 
 function Category() {
   return (
     <div className=''>
-      <h1 className='md:text-5xl text-center font-bold'>Order Online</h1>
+      <SectionTitle
+      subHeading={"---From 11:00am to 10:00pm---"}
+      heading={"Order Online"}
+
+      
+      />
+   
       <hr />
       <br />
       <br />
