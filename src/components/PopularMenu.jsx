@@ -16,7 +16,7 @@ const [menu,setMenu]=useState([])
   return (
     <div>
       <SectionTitle  subHeading={"---Check it out---"} heading={"FROM OUR MENU"} />
-<div className="">
+<div className="grid grid-cols-2 gap-4  p-2">
   {
     menu.map((item,idx)=> (<MenuItems item={item} key={idx}/>))
   }
