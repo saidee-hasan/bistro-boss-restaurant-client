@@ -5,6 +5,7 @@ import ChefService from '../components/ChefService'
 import PopularMenu from '../components/PopularMenu'
 import Call from '../components/Call'
 import Card from '../components/Card'
+import Featured from '../components/Featured'
 
 
 
@@ -22,6 +23,7 @@ function Home() {
  <PopularMenu/>
 <Call/>
 <Card/>
+<Featured/>
     </div>
   )
 }
