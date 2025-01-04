@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import SectionTitle from './SectionTitle'
+import MenuItems from './MenuItems'
 
 export default function PopularMenu() {
 const [menu,setMenu]=useState([])
@@ -17,7 +18,7 @@ const [menu,setMenu]=useState([])
       <SectionTitle  subHeading={"---Check it out---"} heading={"FROM OUR MENU"} />
 <div className="">
   {
-    menu
+    menu.map((item,idx)=> (<MenuItems item={item} idx={idx}/>))
   }
 
 </div>
