@@ -5,17 +5,17 @@ import featuredImg from "../assets/home/featured.jpg";
 function Featured() {
   return (
     <div
-      className="bg-cover bg-center flex items-center justify-center"
+      className="bg-cover bg-center bg-fixed flex items-center justify-center"
       style={{ backgroundImage: `url(${featuredImg})` }}
     >
-      <div className="bg-black bg-opacity-60 w-full h-full flex justify-center items-center px-4 sm:px-8">
+      <div className="bg-black bg-opacity-30 w-full h-full flex justify-center items-center px-4 sm:px-8">
         <div className="text-white text-center md:text-left px-6 py-10 max-w-screen-xl mx-auto">
           <SectionTitle
             subHeading={"---Check it out---"}
             heading={"FROM OUR MENU"}
           />
           <br />
-          <div className="md:flex justify-center items-center space-y-8 md:space-y-0 md:space-x-8">
+          <div className="md:flex bg-slate-200 bg-opacity-10  bg-fixed  justify-center items-center space-y-8 md:space-y-0 md:space-x-8">
             {/* Image Section */}
             <div className="md:w-1/2 w-full">
               <img
