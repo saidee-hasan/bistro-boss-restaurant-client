@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 // Make sure this is the correct path to the logo.
-import Shop from "../assets/icon/151-1511569_cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview.png";
-
+import Shop from"../assets/icon/151-1511569_cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview.png"
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -9,25 +8,24 @@ function Navbar() {
 
   const navOptions = (
     <>
-      <li><a className="uppercase font-bold">Home</a></li>
-      <li><a className="uppercase">Contact Us</a></li>
-      <li><a className="uppercase">Dashboard</a></li>
-      <li><a className="uppercase">Our Menu</a></li>
-      <li><a className="uppercase">Our Shop</a></li>
+      <li><a className='uppercase font-bold' href='/'>Home</a></li>
+      <li><a className='uppercase'>Contact Us</a></li>
+
+      <li><a className='uppercase'>Dashboard</a></li>
+      <li><a href='/menu'  className='uppercase'> Our Menu</a></li>
+      <li><a className='uppercase'>Our Shop</a></li>
     </>
   );
 
   return (
     <div>
-      <div className="navbar fixed z-10 max-w-screen-xl text-white bg-black bg-opacity-40 bg-base-100">
-        {/* Left Section: Hamburger Menu and Logo */}
+      <div className="navbar fixed z-10 max-w-screen-xl text-white bg-black bg-opacity-50 bg-base-100">
         <div className="navbar-start">
-          {/* Mobile Hamburger Icon */}
-          <div className="dropdown lg:hidden">
+          <div className="dropdown">
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost"
+              className="btn btn-ghost lg:hidden"
               onClick={toggleMenu}
             >
               <svg
@@ -58,9 +56,12 @@ function Navbar() {
           </div>
 
           {/* Logo and Restaurant Name */}
-          <div>
-            <h3 className="font-bold text-2xl text-gray-300">BISTRO BOSS</h3>
-            <h5 className="font-bold text-gray-300">Restaurant</h5>
+          <div className="flex items-center">
+          
+            <div>
+              <h3 className="font-bold text-2xl text-gray-300">BISTRO BOSS</h3>
+              <h5 className="font-bold text-gray-300">Restaurant</h5>
+            </div>
           </div>
         </div>
 
@@ -71,45 +72,32 @@ function Navbar() {
           </ul>
         </div>
 
-        {/* Right Section: Cart and Profile */}
-        <div className="navbar-end flex items-center">
-          {/* Cart Icon */}
-          <div className="dropdown dropdown-end flex items-center">
-            <img className="w-10 cursor-pointer" src={Shop} alt="Cart" />
-          </div>
-
-          {/* Profile Avatar */}
-          <div className="dropdown dropdown-end flex items-center ml-4">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-10 rounded-full">
-                <img
-                  alt="User Avatar"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                />
-              </div>
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-            >
-              <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
-              </li>
-              <li><a>Settings</a></li>
-              <li><a>Logout</a></li>
-            </ul>
-          </div>
+        {/* Navbar End */}
+        <div className="navbar-end text-bl">
+        <div className="dropdown dropdown-end  flex items-center ml-4">
+          <img className='w-10' src={Shop} alt="" />
+      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+        <div className="w-10 rounded-full">
+          <img
+            alt="Tailwind CSS Navbar component"
+            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
         </div>
       </div>
-
-      {/* Divider */}
+      <ul
+        tabIndex={0}
+        className="menu menu-sm dropdown-content mt-16 text-black bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+        <li>
+          <a className="justify-between">
+            Profile
+            <span className="badge">New</span>
+          </a>
+        </li>
+        <li><a>Settings</a></li>
+        <li><a>Logout</a></li>
+      </ul>
+    </div>
+        </div>
+      </div>
       <hr />
     </div>
   );
