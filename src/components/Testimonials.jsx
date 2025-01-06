@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
-import ReactStars from 'react-rating-stars-component'; // Import the rating stars component
+import ReactStars from 'react-rating-stars-component';
 
 function Testimonials() {
   const [reviews, setReviews] = useState([]);
@@ -41,19 +41,37 @@ function Testimonials() {
   return (
     <div className='m-5'>
       <SectionTitle subHeading={"What Our Clients Say"} heading={"Testimonials"} />
-      <div className="">
-        <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+      <div className="max-w-screen-lg mx-auto"> {/* Center the Swiper */}
+        <Swiper
+          navigation={true}
+          modules={[Navigation]}
+          className="mySwiper"
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 1,
+              spaceBetween: 30,
+            },
+            1024: {
+              slidesPerView: 1,
+              spaceBetween: 40,
+            },
+          }}
+        >
           {reviews.map(({ name, details, rating }, idx) => (
             <SwiperSlide key={idx}>
-              <div className="p-4 m-24 text-center">
-                <div className="flex justify-center mb-2"> {/* Flexbox for centering */}
+              <div className="p-4 text-center">
+                <div className="flex justify-center mb-2">
                   <ReactStars
                     count={5}
-                    value={rating} // Assuming your JSON has a rating field
-                    edit={false} // Set to false to make it read-only
+                    value={rating}
+                    edit={false}
                     size={44}
-                    activeColor="#ffd700" // Gold color for active stars
-                    aria-label={`Rating for ${name}`} // Accessibility
+                    activeColor="#ffd700"
+                    aria-label={`Rating for ${name}`}
                   />
                 </div>
                 <p className="text-lg mt-2">{details}</p>
