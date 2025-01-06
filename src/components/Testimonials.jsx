@@ -12,7 +12,7 @@ function Testimonials() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('../reviews.json')
+    fetch('http://localhost:5000/reviews')
       .then((res) => {
         if (!res.ok) {
           throw new Error('Network response was not ok');

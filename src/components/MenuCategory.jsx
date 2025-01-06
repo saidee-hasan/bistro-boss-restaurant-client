@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MenuItems from './MenuItems';
 import Cover from '../shared/Cover';
+import { Link } from 'react-router-dom';
 
 function MenuCategory({ items, title, img }) {
   return (
@@ -12,6 +13,16 @@ function MenuCategory({ items, title, img }) {
           <MenuItems key={item.id} item={item} /> 
         ))}
       </div>
+
+      <Link to={`/order/${title}`}>
+
+<button className="btn btn-outline border-0 border-b-4 border-blue-500 hover:bg-blue-500 hover:text-white transition duration-300">
+
+  Order
+
+</button>
+
+</Link>
     </div>
   );
 }

@@ -13,7 +13,7 @@ function Navbar() {
 
       <li><a className='uppercase'>Dashboard</a></li>
       <li><a href='/menu'  className='uppercase'> Our Menu</a></li>
-      <li><a href='/order' className='uppercase'>Our Shop</a></li>
+      <li><a href='/order/salad' className='uppercase'>Our Shop</a></li>
     </>
   );
 
