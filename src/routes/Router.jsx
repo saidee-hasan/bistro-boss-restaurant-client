@@ -3,6 +3,7 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home";
 import Menu from "../pages/Menu";
 import Order from "../pages/Order";
+import Login from "../pages/Login";
 
 const router = createBrowserRouter([
     {
@@ -12,7 +13,9 @@ const router = createBrowserRouter([
             {path:"/",element:<Home/>},
             {path:"/menu",element:<Menu/>},
             {path:"/order/:category",element:<Order/>},
+            {path:"/login",element:<Login/>},
         ])
-    }
+    },
+   
 ])
 export default router;
