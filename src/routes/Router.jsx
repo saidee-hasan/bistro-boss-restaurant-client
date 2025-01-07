@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import Secret from "../shared/Secret";
 import UpdateProfile from "../components/UpdateProfile";
 import Profile from "../components/Profile";
+import Setting from "../components/Setting";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
             {path:"/secret",element:<PrivateRoute><Secret/></PrivateRoute>},
             {path:"/profile",element: <PrivateRoute><Profile/></PrivateRoute>},
             {path:"/update",element:<PrivateRoute><UpdateProfile/></PrivateRoute>  },
+            {path:"/setting",element:<PrivateRoute><Setting/></PrivateRoute>  },
         ])
     },
    

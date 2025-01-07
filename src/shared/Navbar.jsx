@@ -96,7 +96,7 @@ console.log(id)
             <span className="badge">New</span>
           </a>
         </li>
-        <li><a>Settings</a></li>
+        <li><a href='/setting'>Settings</a></li>
         {
                 user ? 
                   <li><a onClick={() => signOutUser()}>Logout</a></li> 
