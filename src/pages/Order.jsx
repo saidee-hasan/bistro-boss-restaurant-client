@@ -34,12 +34,15 @@ function Order() {
       </Helmet>
       <Cover image={orderImg} title='Order Food' />
       <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-        <TabList className="flex justify-center space-x-4 mb-6">
-          {categories.map((cat, index) => (
-            <Tab key={index} aria-label={cat} className={`tab ${tabIndex === index } btn btn-active btn-ghost`}>
-              {cat.charAt(0).toUpperCase() + cat.slice(1)} {/* Capitalize the first letter */}
-            </Tab>
-          ))}
+        <TabList className="flex justify-center space-x-2 md:space-x-4 mb-6 flex-wrap">
+
+  <Tab>Salad</Tab>
+  <Tab>Pizza</Tab>
+  <Tab>Soup</Tab>
+  <Tab>Dessert</Tab>
+  <Tab>Drinks</Tab>
+
+  
         </TabList>
 
         <TabPanel>

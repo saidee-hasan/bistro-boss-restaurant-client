@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 // Make sure this is the correct path to the logo.
 import Shop from"../assets/icon/151-1511569_cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview.png"
+import { AuthContext } from '../Provider/AuthProvider';
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+const {user,signOutUser} = useContext(AuthContext)
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const navOptions = (
@@ -85,7 +86,7 @@ function Navbar() {
       </div>
       <ul
         tabIndex={0}
-        className="menu menu-sm dropdown-content mt-16 text-black bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+        className="menu menu-sm dropdown-content mt-40 text-black bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
         <li>
           <a className="justify-between">
             Profile
@@ -93,7 +94,11 @@ function Navbar() {
           </a>
         </li>
         <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
+        {
+                user ? 
+                  <li><a onClick={() => signOutUser()}>Logout</a></li> 
+                  : <li><a href='/register'>Login</a></li>
+              }
       </ul>
     </div>
         </div>
