@@ -2,11 +2,13 @@ import React, { useContext, useState } from 'react';
 // Make sure this is the correct path to the logo.
 import Shop from"../assets/icon/151-1511569_cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview.png"
 import { AuthContext } from '../Provider/AuthProvider';
+import { Link, useParams } from 'react-router-dom';
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 const {user,signOutUser} = useContext(AuthContext)
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
+const id = useParams()
+console.log(id)
   const navOptions = (
     <>
       <li><a className='uppercase font-bold' href='/'>Home</a></li>
@@ -14,7 +16,7 @@ const {user,signOutUser} = useContext(AuthContext)
 
       <li><a className='uppercase'>Dashboard</a></li>
       <li><a href='/menu'  className='uppercase'> Our Menu</a></li>
-      <li><a href='/order/salad' className='uppercase'>Our Shop</a></li>
+      <li><Link to={`/order/${id}`} className='uppercase'>Our Shop</Link></li>
     </>
   );
 
@@ -79,16 +81,17 @@ const {user,signOutUser} = useContext(AuthContext)
           <img className='w-10' src={Shop} alt="" />
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
+          
           <img
             alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            src={user?.photoURL} />
         </div>
       </div>
       <ul
         tabIndex={0}
         className="menu menu-sm dropdown-content mt-40 text-black bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
         <li>
-          <a className="justify-between">
+          <a href='/profile' className="justify-between">
             Profile
             <span className="badge">New</span>
           </a>

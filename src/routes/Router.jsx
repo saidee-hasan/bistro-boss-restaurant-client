@@ -5,6 +5,10 @@ import Menu from "../pages/Menu";
 import Order from "../pages/Order";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import PrivateRoute from "./PrivateRoute";
+import Secret from "../shared/Secret";
+import UpdateProfile from "../components/UpdateProfile";
+import Profile from "../components/Profile";
 
 const router = createBrowserRouter([
     {
@@ -16,6 +20,9 @@ const router = createBrowserRouter([
             {path:"/order/:category",element:<Order/>},
             {path:"/login",element:<Login/>},
             {path:"/register",element:<Register/>},
+            {path:"/secret",element:<PrivateRoute><Secret/></PrivateRoute>},
+            {path:"/profile",element: <PrivateRoute><Profile/></PrivateRoute>},
+            {path:"/update",element:<PrivateRoute><UpdateProfile/></PrivateRoute>  },
         ])
     },
    

@@ -41,7 +41,8 @@ function AuthProvider({ children }) {
     createUser,
     user,
     signOutUser,
-    loginUser
+    loginUser,
+    loading
   };
   console.log(user)
 
