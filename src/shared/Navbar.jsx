@@ -3,7 +3,11 @@ import React, { useContext, useState } from 'react';
 import Shop from"../assets/icon/151-1511569_cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview.png"
 import { AuthContext } from '../Provider/AuthProvider';
 import { Link, useParams } from 'react-router-dom';
+import { FaShoppingCart } from 'react-icons/fa';
+import useCart from '../hooks/useCart';
 function Navbar() {
+  const [cart]= useCart()
+ 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 const {user,signOutUser} = useContext(AuthContext)
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -16,7 +20,18 @@ console.log(id)
 
       <li><a className='uppercase'>Dashboard</a></li>
       <li><a href='/menu'  className='uppercase'> Our Menu</a></li>
-      <li><Link to={`/order/${id}`} className='uppercase'>Our Shop</Link></li>
+      <li><Link to={`/order/salad`} className='uppercase'>Our Shop</Link></li>
+      <li><Link  to='/'  className='uppercase'>
+
+      <button className='flex mt-1'>
+      <FaShoppingCart />
+      <div className="badge badge-neutral">+{cart.length}</div>
+    </button>
+    
+      
+
+       
+       </Link></li>
     </>
   );
 
