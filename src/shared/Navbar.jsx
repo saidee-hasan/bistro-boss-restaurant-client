@@ -21,7 +21,7 @@ console.log(id)
       <li><a className='uppercase'>Dashboard</a></li>
       <li><a href='/menu'  className='uppercase'> Our Menu</a></li>
       <li><Link to={`/order/salad`} className='uppercase'>Our Shop</Link></li>
-      <li><Link  to='/'  className='uppercase'>
+      <li><Link  to='/dashboard/cart'  className='uppercase'>
 
       <button className='flex mt-1'>
       <FaShoppingCart />

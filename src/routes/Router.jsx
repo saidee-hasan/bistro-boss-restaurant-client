@@ -10,6 +10,8 @@ import Secret from "../shared/Secret";
 import UpdateProfile from "../components/UpdateProfile";
 import Profile from "../components/Profile";
 import Setting from "../components/Setting";
+import Dashboard from "../layout/Dashboard";
+import Cart from "../pages/DashBoard/Cart";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +28,13 @@ const router = createBrowserRouter([
             {path:"/update",element:<PrivateRoute><UpdateProfile/></PrivateRoute>  },
             {path:"/setting",element:<PrivateRoute><Setting/></PrivateRoute>  },
         ])
+    },
+    {path:"/dashboard",
+        element:<Dashboard/>,
+        children:[
+            {path:"/dashboard/cart",element:<Cart/>},
+        ]
+    
     },
    
 ])
