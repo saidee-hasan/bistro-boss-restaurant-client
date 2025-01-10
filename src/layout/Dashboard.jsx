@@ -2,10 +2,11 @@ import React from "react";
 import { FaBook, FaCalendar, FaEnvelope, FaHome, FaICursor, FaList, FaMenorah, FaShoppingCart } from "react-icons/fa";
 import { FaVoicemail } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
 
 function Dashboard() {
   // get is admin value for database
-  const isAdmin = true;
+  const [isAdmin] = useAdmin;
   return (
     <div className="flex">
       <div className="w-64 bg-orange-500 min-h-screen">

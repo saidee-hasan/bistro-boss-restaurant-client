@@ -58,7 +58,7 @@ axiosPublic.post('/jwt',userInfo)
     return () => {
       unsubscribe();
     };
-  }, [auth]);
+  }, [auth,axiosPublic]);
   const signOutUser = ()=>{
     setLoading(true)
     return signOut(auth)
