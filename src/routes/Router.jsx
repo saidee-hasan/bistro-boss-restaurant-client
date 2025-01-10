@@ -12,6 +12,7 @@ import Profile from "../components/Profile";
 import Setting from "../components/Setting";
 import Dashboard from "../layout/Dashboard";
 import Cart from "../pages/DashBoard/Cart";
+import AllUsers from "../pages/DashBoard/AllUsers";
 
 const router = createBrowserRouter([
     {
@@ -32,7 +33,8 @@ const router = createBrowserRouter([
     {path:"/dashboard",
         element:<PrivateRoute> <Dashboard/></PrivateRoute> ,
         children:[
-            {path:"/dashboard/cart",element:<Cart/>},
+            {path:"cart",element:<Cart/>},
+            {path:"users",element:<AllUsers/>},
         ]
     
     },

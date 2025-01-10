@@ -31,7 +31,7 @@ function Dashboard() {
               <FaList /> Manage Items
             </NavLink>
 
-            <NavLink to={"/dashboard/allUsers"}>
+            <NavLink to={"users"}>
            
               <FaICursor /> All Users
             </NavLink>
