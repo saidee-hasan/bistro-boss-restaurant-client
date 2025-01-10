@@ -1,44 +1,58 @@
 import React from "react";
-import { FaBook, FaCalendar, FaHome, FaICursor, FaMenorah, FaShoppingCart } from "react-icons/fa";
+import { FaBook, FaCalendar, FaEnvelope, FaHome, FaICursor, FaList, FaMenorah, FaShoppingCart } from "react-icons/fa";
+import { FaVoicemail } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
 
 function Dashboard() {
+  // get is admin value for database
+  const isAdmin = true;
   return (
     <div className="flex">
       <div className="w-64 bg-orange-500 min-h-screen">
         <ul className="menu">
-          <li>
-            <NavLink to={"/dashboard/userHome"}>
+
+          {
+            isAdmin ?
+            <>
+            <li>
+            <NavLink to={"/dashboard/adminHome"}>
               {" "}
               <FaHome />
-              User Home{" "}
+             Admin Home{" "}
             </NavLink>
 
-            <NavLink to={"/dashboard/reservation"}>
+            <NavLink to={"/dashboard/addItems"}>
               {" "}
-              <FaCalendar /> Reservation
+              <FaCalendar /> Add Items
             </NavLink>
             
             <NavLink to={"/dashboard/cart"}>
               {" "}
-              <FaShoppingCart /> My Cart
+              <FaList /> Manage Items
             </NavLink>
 
-            <NavLink to={"/dashboard/review"}>
+            <NavLink to={"/dashboard/allUsers"}>
            
-              <FaICursor /> Review
+              <FaICursor /> All Users
             </NavLink>
-            <NavLink to={"/dashboard/booking"}>
+            <NavLink to={"/dashboard/bookings"}>
            
-              <FaBook /> My Booking
+              <FaBook /> Manage Booking
             </NavLink>
        
 
-          </li>
+          </li></>:null
+          }
+      
+          {/* Shgere nav */}
           <div className="divider"> </div>
 <li>  <NavLink to={"/"}>
            
            <FaBook /> Home
+         </NavLink></li>
+<li>  <NavLink to={"/"}>
+           
+           <FaEnvelope /> Contact
          </NavLink></li>
 <li>  <NavLink to={"/dashboard/menu"}>
            

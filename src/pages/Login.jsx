@@ -4,8 +4,11 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-s
 import { AuthContext } from '../Provider/AuthProvider';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import useAxiosPublic from '../hooks/useAxiosPublic';
+import SocialLogin from '../components/SocialLogin';
 
 function Login() {
+  const axiosPublic= useAxiosPublic()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const captchaRef = useRef(null);
@@ -36,7 +39,24 @@ function Login() {
 
     try {
       // Attempt to login the user
-      await loginUser(email, password);
+      await loginUser(email, password)
+      .then(res=>{
+        const userInfo={
+          name : data.name,
+          email:data.email
+        }
+        axiosPublic.post('/users',userInfo)
+        .then(res=>{
+          if(res.data.insertedId){
+            console.log('saidee')
+          }
+        })
+
+      })
+    
+
+
+
     } catch (err) {
       setError(err.message);
     } finally {
@@ -124,6 +144,7 @@ function Login() {
                 </button>
               </div>
             </form>
+            <SocialLogin/>
           </div>
         </div>
       </div>
