@@ -6,11 +6,12 @@ import useAdmin from "../hooks/useAdmin";
 
 function Dashboard() {
   // get is admin value for database
-  const [isAdmin] = useAdmin;
+  const [isAdmin ]= useAdmin();
+
   return (
     <div className="flex">
       <div className="w-64 bg-orange-500 min-h-screen">
-        <ul className="menu">
+        <ul className="menu">/addItems
 
           {
             isAdmin ?
@@ -22,7 +23,7 @@ function Dashboard() {
              Admin Home{" "}
             </NavLink>
 
-            <NavLink to={"/dashboard/addItems"}>
+            <NavLink to={"/dashboard/AddItems"}>
               {" "}
               <FaCalendar /> Add Items
             </NavLink>
