@@ -1,168 +1,131 @@
-import React from 'react'
+import React, { useState } from 'react';
+import useMenu from '../../hooks/useMenu';
+import { FaTrash, FaEdit, FaTh, FaTable } from 'react-icons/fa'; // Importing React Icons
 
 function ManageItems() {
+  const [menu] = useMenu(); // Assuming `useMenu` returns an array of menu items
+  const [isTableView, setIsTableView] = useState(true); // State to toggle between table and card view
+
+  // Toggle view function
+  const toggleView = () => {
+    setIsTableView(!isTableView);
+  };
+
   return (
     <div>
-      <div className="overflow-x-auto">
-  <table className="table">
-    {/* head */}
-    <thead>
-      <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      {/* row 1 */}
-      <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
-        <td>
-          <div className="flex items-center gap-3">
-            <div className="avatar">
-              <div className="mask mask-squircle h-12 w-12">
-                <img
-                  src="https://img.daisyui.com/images/profile/demo/2@94.webp"
-                  alt="Avatar Tailwind CSS Component" />
+      {/* Button to toggle between card and table views */}
+      <div className="text-center mb-4">
+        <button
+          onClick={toggleView}
+          className="btn  w-full flex items-center gap-2"
+        >
+          {/* Add Icon with Text */}
+          {isTableView ? (
+            <>
+              <FaTh /> {/* Grid Icon for Card View */}
+              Switch to Card View
+            </>
+          ) : (
+            <>
+              <FaTable /> {/* Table Icon for Table View */}
+              Switch to Table View
+            </>
+          )}
+        </button>
+      </div>
+
+      {/* Conditionally render table or card layout */}
+      {isTableView ? (
+        <div className="overflow-x-auto">
+          <table className="table">
+            {/* Table Header */}
+            <thead>
+              <tr>
+                <th></th>
+                <th>Item Name</th>
+                <th>Price</th>
+                <th>Update</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* Map through the menu items */}
+              {menu && menu.length > 0 ? (
+                menu.map((item, idx) => (
+                  <tr key={item._id}>
+                    <th>{idx + 1}</th>
+                    <td>
+                      <div className="flex items-center gap-3">
+                        <div className="avatar">
+                          <div className="mask mask-squircle h-12 w-12">
+                            <img
+                              src={item.image}
+                              alt={item.name}
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="font-bold">{item.name}</div>
+                          <div className="text-sm opacity-50">{item.category}</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>${item.price}</td>
+                    <td>
+                      <button className="btn btn-ghost btn-xs">
+                        <FaEdit /> Update
+                      </button>
+                    </td>
+                    <td>
+                      <button className="btn btn-ghost btn-xs text-red-500">
+                        <FaTrash /> Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="5" className="text-center">No menu items found</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 p-10 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Map through the menu items in card view */}
+          {menu && menu.length > 0 ? (
+            menu.map((item) => (
+              <div key={item._id} className="card bg-white shadow-xl rounded-lg overflow-hidden">
+                <figure>
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-48 object-cover"
+                  />
+                </figure>
+                <div className="p-4">
+                  <div className="font-bold text-lg">{item.name}</div>
+                  <div className="text-sm text-gray-500">{item.category}</div>
+                  <div className="text-xl font-semibold mt-2">${item.price}</div>
+                  <div className="flex justify-between mt-4">
+                    <button className="btn btn-ghost btn-xs">
+                      <FaEdit /> Update
+                    </button>
+                    <button className="btn btn-ghost btn-xs text-red-500">
+                      <FaTrash /> Delete
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div>
-              <div className="font-bold">Hart Hagerty</div>
-              <div className="text-sm opacity-50">United States</div>
-            </div>
-          </div>
-        </td>
-        <td>
-          Zemlak, Daniel and Leannon
-          <br />
-          <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-        </td>
-        <td>Purple</td>
-        <th>
-          <button className="btn btn-ghost btn-xs">details</button>
-        </th>
-      </tr>
-      {/* row 2 */}
-      <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
-        <td>
-          <div className="flex items-center gap-3">
-            <div className="avatar">
-              <div className="mask mask-squircle h-12 w-12">
-                <img
-                  src="https://img.daisyui.com/images/profile/demo/3@94.webp"
-                  alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div className="font-bold">Brice Swyre</div>
-              <div className="text-sm opacity-50">China</div>
-            </div>
-          </div>
-        </td>
-        <td>
-          Carroll Group
-          <br />
-          <span className="badge badge-ghost badge-sm">Tax Accountant</span>
-        </td>
-        <td>Red</td>
-        <th>
-          <button className="btn btn-ghost btn-xs">details</button>
-        </th>
-      </tr>
-      {/* row 3 */}
-      <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
-        <td>
-          <div className="flex items-center gap-3">
-            <div className="avatar">
-              <div className="mask mask-squircle h-12 w-12">
-                <img
-                  src="https://img.daisyui.com/images/profile/demo/4@94.webp"
-                  alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div className="font-bold">Marjy Ferencz</div>
-              <div className="text-sm opacity-50">Russia</div>
-            </div>
-          </div>
-        </td>
-        <td>
-          Rowe-Schoen
-          <br />
-          <span className="badge badge-ghost badge-sm">Office Assistant I</span>
-        </td>
-        <td>Crimson</td>
-        <th>
-          <button className="btn btn-ghost btn-xs">details</button>
-        </th>
-      </tr>
-      {/* row 4 */}
-      <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
-        <td>
-          <div className="flex items-center gap-3">
-            <div className="avatar">
-              <div className="mask mask-squircle h-12 w-12">
-                <img
-                  src="https://img.daisyui.com/images/profile/demo/5@94.webp"
-                  alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div className="font-bold">Yancy Tear</div>
-              <div className="text-sm opacity-50">Brazil</div>
-            </div>
-          </div>
-        </td>
-        <td>
-          Wyman-Ledner
-          <br />
-          <span className="badge badge-ghost badge-sm">Community Outreach Specialist</span>
-        </td>
-        <td>Indigo</td>
-        <th>
-          <button className="btn btn-ghost btn-xs">details</button>
-        </th>
-      </tr>
-    </tbody>
-    {/* foot */}
-    <tfoot>
-      <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
-        <th></th>
-      </tr>
-    </tfoot>
-  </table>
-</div>
+            ))
+          ) : (
+            <div className="col-span-full text-center">No menu items found</div>
+          )}
+        </div>
+      )}
     </div>
-  )
+  );
 }
 
-export default ManageItems
+export default ManageItems;
