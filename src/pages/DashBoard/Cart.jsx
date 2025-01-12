@@ -9,7 +9,7 @@ function Cart() {
   const [cart, refetch] = useCart();
 const axiosSecure = useAxiosSecure()
   // Calculate total price considering quantity
-  const totalPrice = cart.reduce((total, item) => total + item.price + 40 / 100, 0);
+  const totalPrice = cart.reduce((total, item) => total + item.price , 0);
 
   // Function to handle removing an item from the cart
   const handleRemoveItem = (id) => {
@@ -45,7 +45,7 @@ const axiosSecure = useAxiosSecure()
     <div>
       <div className="flex justify-between bg-slate-200 py-4 p-2">
         <h2 className="text-2xl">Items: {cart.length}</h2>
-        <h2 className="text-xl font-bold">Total Price: ${totalPrice.toFixed(2)}</h2>
+        <h2 className="text-xl font-bold">Total Price: ${totalPrice}</h2>
         <button className="btn btn-primary">Pay</button>
       </div>
 

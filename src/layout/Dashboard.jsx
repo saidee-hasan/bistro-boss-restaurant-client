@@ -27,20 +27,21 @@ function Dashboard() {
               {" "}
               <FaCalendar /> Add Items
             </NavLink>
+            <NavLink to={"manageItems"}>
+           
+           <FaBook /> Manage Items
+         </NavLink>
             
             <NavLink to={"/dashboard/cart"}>
               {" "}
-              <FaList /> Manage Items
+              <FaList /> Manage Cart
             </NavLink>
 
             <NavLink to={"users"}>
            
               <FaICursor /> All Users
             </NavLink>
-            <NavLink to={"/dashboard/bookings"}>
-           
-              <FaBook /> Manage Booking
-            </NavLink>
+        
        
 
           </li></>:null

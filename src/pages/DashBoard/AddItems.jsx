@@ -2,12 +2,15 @@ import React from 'react';
 import SectionTitle from '../../components/SectionTitle';
 import { useForm } from 'react-hook-form';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+
 
 export default function AddItems() {
   const imageHostingKey = import.meta.env.VITE_IMAGE_HOSTING_KEY;
   const image_Hosting_Api = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
 
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const {
     register,
@@ -16,9 +19,10 @@ export default function AddItems() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    // Create a new FormData object to handle the file upload
+    
+    
     const formData = new FormData();
-    formData.append('image', data.image[0]); // Append the image file
+    formData.append('image', data.image[0]); 
 
     try {
       // Send the image upload request to imgBB API
@@ -28,12 +32,30 @@ export default function AddItems() {
         },
       });
 
-      if(res.data.success){
-        // now send
+      // If image upload is successful, proceed with sending the menu item data
+      if (res.data.success) {
+        // Prepare the menu item object
+        const menuItem = {
+          name: data.name,
+          category: data.category,
+          price: parseInt(data.price) ,
+          recipe: data.recipe, // recipe description from form
+          image: res.data.data.url, // URL of the uploaded image from the image hosting service
+        };
+
+
+       
+    
+       axiosSecure.post('/menu',menuItem)
+
+        console.log(menuItem)
+
+
 
       }
+  
 
-      console.log(res.data); // Handle the response from the image hosting service
+    
     } catch (error) {
       console.error('Error uploading image:', error); // Handle any errors in the image upload
     }
@@ -107,13 +129,13 @@ export default function AddItems() {
           </div>
         </div>
 
-        {/* Description (Bio) */}
+        {/* Recipe (Description) */}
         <div>
           <label className="label">
-            <span className="label-text text-lg font-semibold">Description</span>
+            <span className="label-text text-lg font-semibold">Recipe</span>
           </label>
           <textarea
-            {...register("bio")}
+            {...register("recipe")}
             className="textarea textarea-bordered w-full rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Add a description"
           />
