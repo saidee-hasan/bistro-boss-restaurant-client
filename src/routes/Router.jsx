@@ -15,6 +15,7 @@ import Cart from "../pages/DashBoard/Cart";
 import AllUsers from "../pages/DashBoard/AllUsers";
 import AddItems from "../pages/DashBoard/AddItems";
 import ManageItems from "../pages/DashBoard/ManageItems";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
     {
@@ -38,9 +39,9 @@ const router = createBrowserRouter([
             // normal user
             {path:"cart",element:<Cart/>},
             // only admin
-            {path:"users",element:<AllUsers/>},
-            {path:"addItems",element:   <AddItems/>},
-            {path:"manageItems",element: <ManageItems/>},
+            {path:"users",element:<AdminRoute> <AllUsers/></AdminRoute>  },
+            {path:"addItems",element: <AdminRoute><AddItems/></AdminRoute>   },
+            {path:"manageItems",element:<AdminRoute><ManageItems/></AdminRoute>  },
             
         ]
     
